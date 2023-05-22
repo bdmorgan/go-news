@@ -1,19 +1,4 @@
 steps:
-  # see https://www.npmjs.com/package/editorconfig-checker
-  - id: eclint
-    name: "e53e225/editorconfig-checker"
-  - id: go_version
-    name: "gcr.io/cloud-builders/go"
-    args: ["version"]
-    env: ["GOPATH=."]
-  - id: go_dep1
-    name: "gcr.io/cloud-builders/go"
-    args: ["get", "github.com/joho/godotenv"]
-    env: ["GOPATH=."]
-  - id: go_dep2
-    name: "gcr.io/cloud-builders/go"
-    args: ["get", "github.com/bdmorgan/go-news"]
-    env: ["GOPATH=."]
   # [START cloudbuild_go_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
