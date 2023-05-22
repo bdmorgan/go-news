@@ -6,6 +6,14 @@ steps:
     name: "gcr.io/cloud-builders/go"
     args: ["version"]
     env: ["GOPATH=."]
+  - id: go_dep1
+    name: "gcr.io/cloud-builders/go"
+    args: ["get", "github.com/joho/godotenv"]
+    env: ["GOPATH=."]
+  - id: go_dep2
+    name: "gcr.io/cloud-builders/go"
+    args: ["get", "github.com/Freshman-tech/news-demo-starter-files"]
+    env: ["GOPATH=."]
   - id: go_build 
     name: "gcr.io/cloud-builders/go"
     args: ["build","main.go"]
