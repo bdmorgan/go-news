@@ -24,7 +24,7 @@ WORKDIR /app
 # This allows the container build to reuse cached dependencies.
 # Expecting to copy go.mod and if present go.sum.
 COPY go.* ./
-RUN go mod download
+RUN go get github.com/bdmorgan/go-news/news 
 RUN go get github.com/joho/godotenv 
 
 # Copy local code to the container image.
