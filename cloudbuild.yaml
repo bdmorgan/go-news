@@ -14,7 +14,15 @@ steps:
     name: "gcr.io/cloud-builders/go"
     args: ["get", "github.com/bdmorgan/go-news"]
     env: ["GOPATH=."]
-  - id: go_build 
-    name: "gcr.io/cloud-builders/go"
-    args: ["build","main.go"]
-    env: ["GOPATH=."]
+  # [START cloudbuild_go_image_yaml]
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'us-central1-docker.pkg.dev/bryanmorgan-argocd-test/go-news/go-news-image:$SHORT_SHA', '.']
+  # [END cloudbuild_go_image_yaml]
+  
+  # [START cloudbuild_go_push_yaml]
+  # Docker push to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/bryanmorgan-argocd-test/go-news/go-news-image:$SHORT_SHA']
+  # [END cloudbuild_go_push_yaml]
