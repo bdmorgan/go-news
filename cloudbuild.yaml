@@ -12,7 +12,7 @@ steps:
     env: ["GOPATH=."]
   - id: go_dep2
     name: "gcr.io/cloud-builders/go"
-    args: ["get", "github.com/Freshman-tech/news-demo-starter-files"]
+    args: ["get", "github.com/bdmorgan/go-news"]
     env: ["GOPATH=."]
   - id: go_build 
     name: "gcr.io/cloud-builders/go"
