@@ -1,6 +1,3 @@
-require (
-	github.com/joho/godotenv
-	github.com/bdmorgan/go-news
-)
+module github.com/bdmorgan/go-test
 
 go 1.15
