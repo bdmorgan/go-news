@@ -43,12 +43,14 @@ FROM debian:buster-slim
 RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ca-certificates && \
     rm -rf /var/lib/apt/lists/*
+WORKDIR /
 
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /app/.env /app/.env
 COPY --from=builder /app/index.html /app/index.html
 COPY --from=builder /app/assets /app/assets
 COPY --from=builder /app/server /app/server
-
+ENV PORT 8088
+USER nonroot:nonroot
 # Run the web service on container startup.
 CMD ["/app/server"]
