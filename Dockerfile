@@ -53,4 +53,4 @@ COPY --from=builder /app/server ./
 
 ENV PORT 8088
 # Run the web service on container startup.
-CMD ["server"]
+CMD ["/app/server"]
