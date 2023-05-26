@@ -62,3 +62,4 @@ spec:
   selector:
     app: go-web 
   type: LoadBalancer 
+  loadBalancerIP: 34.132.124.70
