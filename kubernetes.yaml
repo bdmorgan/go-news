@@ -61,4 +61,3 @@ spec:
     targetPort: 8088
   selector:
     app: go-web 
-  type: LoadBalancer 
