@@ -15,7 +15,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var tpl = template.Must(template.ParseFiles("index.html"))
+var tpl = template.Must(template.ParseFiles("./index.html"))
 var newsapi *news.Client
 
 type Search struct {
