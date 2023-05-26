@@ -24,8 +24,8 @@ WORKDIR /app
 # This allows the container build to reuse cached dependencies.
 # Expecting to copy go.mod and if present go.sum.
 COPY go.* ./
-COPY *.html ./
-COPY assets ./
+COPY index.html /app
+COPY assets /app
 RUN go mod download
 RUN go get github.com/joho/godotenv 
 
@@ -44,7 +44,7 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /app/server /app/server
+COPY --from=builder /app/* /app/*
 
 # Run the web service on container startup.
 CMD ["/app/server"]
