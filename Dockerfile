@@ -51,6 +51,5 @@ COPY --from=builder /app/index.html /app/index.html
 COPY --from=builder /app/assets /app/assets
 COPY --from=builder /app/server /app/server
 ENV PORT 8088
-USER nonroot:nonroot
 # Run the web service on container startup.
 CMD ["/app/server"]
