@@ -44,7 +44,9 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /app/* /app/*
+COPY --from=builder /app/index.html /app/index.html
+COPY --from=builder /app/assets /app/assets
+COPY --from=builder /app/server /app/server
 
 # Run the web service on container startup.
 CMD ["/app/server"]
