@@ -23,6 +23,7 @@ WORKDIR /app
 # Retrieve application dependencies.
 # This allows the container build to reuse cached dependencies.
 # Expecting to copy go.mod and if present go.sum.
+COPY .env ./
 COPY go.* ./
 COPY index.html /app
 COPY assets /app
@@ -44,6 +45,7 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
+COPY --from=builder /app/.env /app/.env
 COPY --from=builder /app/index.html /app/index.html
 COPY --from=builder /app/assets /app/assets
 COPY --from=builder /app/server /app/server
