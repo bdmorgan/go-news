@@ -28,7 +28,7 @@ spec:
 apiVersion: "autoscaling/v2"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "go-web-hpa-30a0"
+  name: "go-web-hpa"
   namespace: "go-web-app"
   labels:
     app: "go-web"
